@@ -19,7 +19,7 @@ class TodoItem extends Model
 
     public static function updateTodo($todoId, $title, $completed = null)
     {
-        $query = "UPDATE todos SET title = '$title' WHERE id = $todoId";
+        $query = "UPDATE todos SET title = '$title' , completed = '$completed' WHERE id = $todoId";
         
         self::$db->query($query);
         $result = self::$db->execute();
@@ -38,11 +38,10 @@ class TodoItem extends Model
     }
     
     // (Optional bonus methods below)
-    // public static function toggleTodos($completed)
-    // {
-    //     // TODO: Implement me!
-    //     // This is to toggle all todos either as completed or not completed
-    // }
+    public static function toggleTodos($completed)
+    {
+        
+    }
 
     // public static function clearCompletedTodos()
     // {
