@@ -26,7 +26,16 @@ class TodoController extends Controller {
     {
         $body = filter_body(); // gives you the body of the request (the "envelope" contents)
         $todoId = $urlParams['id']; // the id of the todo we're trying to update
+        $todoTitle = $body['title']; // the id of the todo we're trying to update
         $completed = isset($body['status']) ? 1 : 0; // whether or not the todo has been checked or not
+
+        $result = TodoItem::updateTodo($todoId, $todoTitle, $completed);
+
+        if ($result) {
+          $this->redirect('/');
+        } else {
+          
+        }
 
         // TODO: Implement me!
         // This action should update a specific todo item in the todos table using the TodoItem::updateTodo method.
