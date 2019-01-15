@@ -34,20 +34,39 @@ class TodoItem extends Model
         static::$db->query($query);
         $result = self::$db->execute();
         return $result;
-
     }
     
     // (Optional bonus methods below)
     public static function toggleTodos($completed)
     {
-        
+
+        if ($completed) {
+            
+            $query = "UPDATE todos SET completed = 2";
+            
+            self::$db->query($query);
+            $result = self::$db->execute();
+            return $result;
+        } else {
+            
+            $query = "UPDATE todos SET completed = 1";
+            
+            self::$db->query($query);
+            $result = self::$db->execute();
+            return $result;
+
+        }
+
     }
 
-    // public static function clearCompletedTodos()
-    // {
-    //     // TODO: Implement me!
-    //     // This is to delete all the completed todos from the database
-    // }
+    public static function clearCompletedTodos()
+    {
+        $query = "DELETE FROM todos WHERE completed = 2";
+        
+        static::$db->query($query);
+        $result = self::$db->execute();
+        return $result;
+    }
 
 }
 
