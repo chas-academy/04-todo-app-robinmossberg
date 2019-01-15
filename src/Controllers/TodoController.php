@@ -19,7 +19,10 @@ class TodoController extends Controller {
 
         if ($result) {
           $this->redirect('/');
+        } else {
+            throw new \Exception("Error occured when trying to add todo-item. Sad panda..");
         }
+
     }
 
     public function update($urlParams)
@@ -32,9 +35,9 @@ class TodoController extends Controller {
         $result = TodoItem::updateTodo($todoId, $todoTitle, $completed);
 
         if ($result) {
-          $this->redirect('/');
+            $this->redirect('/');
         } else {
-          throw new \Exception("Error occured when trying to update todo-item");
+            throw new \Exception("Error occured when trying to update todo-item. Sad panda..");
         }
 
         // TODO: Implement me!
@@ -53,7 +56,9 @@ class TodoController extends Controller {
         $result = TodoItem::deleteTodo($todoId);
 
         if ($result) {
-          $this->redirect('/');
+            $this->redirect('/');
+        } else {
+            throw new \Exception("Error occured when trying to delete item. Sad Panda..");
         }
     }
 
@@ -76,7 +81,7 @@ class TodoController extends Controller {
         if ($result) {
             $this->redirect('/');
         } else {
-            throw new \Exception("Error occured when trying to update todo-item");
+            throw new \Exception("Error occured when trying to update todo-item. Sad panda..");
         }
     }
 
@@ -87,7 +92,10 @@ class TodoController extends Controller {
 
         if ($result) {
           $this->redirect('/');
+        } else {
+          throw new \Exception("Error occured when trying to clear all done items. Sad panda..");
         }
+
     }
 
 }
