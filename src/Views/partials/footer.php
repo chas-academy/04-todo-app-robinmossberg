@@ -10,7 +10,7 @@
 
 <footer class="site-footer">
     <div class="small-container">
-        <p class="text-center">Made by <a href="#">Your Name Here</a></p>
+        <p class="text-center">Made by <a href="http://robinmossberg.chas.academy/" target= "_blank">Robin Mossberg</a></p>
     </div>
 </footer>
 
