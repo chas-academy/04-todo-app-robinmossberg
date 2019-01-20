@@ -27,10 +27,10 @@ class TodoController extends Controller {
 
     public function update($urlParams)
     {
-        $body = filter_body(); // gives you the body of the request (the "envelope" contents)
-        $todoId = $urlParams['id']; // the id of the todo we're trying to update
+        $body = filter_body();
+        $todoId = $urlParams['id'];
         $todoTitle = $body['title'];
-        $completed = isset($body['status']) ? 2 : 1; // whether or not the todo has been checked or not
+        $completed = isset($body['status']) ? 2 : 1; 
 
         $result = TodoItem::updateTodo($todoId, $todoTitle, $completed);
 
@@ -39,14 +39,6 @@ class TodoController extends Controller {
         } else {
             throw new \Exception("Error occured when trying to update todo-item. Sad panda..");
         }
-
-        // TODO: Implement me!
-        // This action should update a specific todo item in the todos table using the TodoItem::updateTodo method.
-        // Try and figure out what parameters you need to pass to the updateTodo-method in the TodoItem model.
-
-        // if there's a result
-          // use the redirect method to send the user back to the list of todos $this->redirect('/');
-        // otherwise, throw an exception or show an error message
     }
 
     public function delete($urlParams)
@@ -62,22 +54,12 @@ class TodoController extends Controller {
         }
     }
 
-    /**
-     * OPTIONAL Bonus round!
-     * 
-     * The two methods below are optional, feel free to try and complete them
-     * if you're aiming for a higher grade.
-     */
     public function toggle()
     {
         $todos = TodoItem::findAll();
-        $body = filter_body(); // gives you the body of the request (the "envelope" contents)
         $numberCompleted = count(array_filter($todos, function($body) { return $body['completed'] === "false"; }));
-
         $result = TodoItem::toggleTodos($numberCompleted);
-
         
-
         if ($result) {
             $this->redirect('/');
         } else {
